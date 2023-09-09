@@ -26,11 +26,11 @@ export const Question = ({q}) => {
   //   rightAnswers = q.question_answer.filter((a) => {if (a.is_right) {return a.id}}).map((a) => {return a.id })
   //   console.log(rightAnswers, userAnswers)
   // }, [q])
-
+  // const questions =
   return (
     <>
     <div>{q.question}</div>
-    <ul>{q.question_answer.map((a) => (<li key={a.id}>
+    <ul>{_.shuffle(q.question_answer).map((a) => (<li key={a.id}>
       <input onClick={() => onClick(a.id)} type="checkbox" name={a.answer}/>
       <label className={isAnswered && rightAnswers.includes(a.id) && styles.rightAnswer} htmlFor={a.answer}>{a.answer}</label></li>))}</ul>
       <button onClick={() => onAnswerClick()}>Ответить</button>
